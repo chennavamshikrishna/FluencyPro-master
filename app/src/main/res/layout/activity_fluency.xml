@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/activity_background">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/word_card_holder"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/word_card_holder"
+            android:layout_alignStart="@+id/word_card_holder"
+            android:layout_alignTop="@+id/word_card_holder"
+            android:background="@drawable/shape_words">
+
+
+            <TextView
+                android:id="@+id/word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="124dp"
+                android:text="word"
+                android:textColor="@color/material_blue"
+                android:textSize="35dp" />
+
+            <ImageView
+                android:id="@+id/sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="78dp"
+                android:src="@drawable/ic_volume_up_black_24dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/record"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:backgroundTint="#ffffff"
+        android:clickable="true"
+        android:src="@drawable/ic_mic_black_24dp"
+        app:fabSize="normal" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="92dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/card"
+            android:layout_alignStart="@+id/card"
+            android:layout_alignTop="@+id/card"
+            android:background="@drawable/shape_words">
+
+            <TextView
+                android:id="@+id/trans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="Your result shown here"
+                android:textColor="@color/material_blue"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/phonetics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="102dp"
+                android:text="phonetics"
+                android:textSize="35dp"
+                android:textColor="@color/material_blue"/>
+        </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/launcher"
+        android:id="@+id/correctImages"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="28dp" />
+
+
+</RelativeLayout>

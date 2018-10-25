@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">FluencyPro</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="font_fontFamily_medium">sans-serif</string>
+    <string name="title_loading">Please Wait</string>
+    <string name="msg_loading">Loading topics list…</string>
+    <string name="reset_progress">Reset Progress</string>
+
+    <string name="one">ONE</string>
+    <string name="eight">EIGHT</string>
+    <string name="five">FIVE</string>
+    <string name="four">FOUR</string>
+    <string name="nine">NINE</string>
+    <string name="seven">SEVEN</string>
+    <string name="six">SIX</string>
+    <string name="ten">TEN</string>
+    <string name="three">THREE</string>
+    <string name="two">TWO</string>
+    <string name="title_activity_scrollable_tabs">Scrollable Tabs</string>
+    <string name="title_activity_simple_tabs">Simple Tabs</string>
+    <string name="btn_simple_tabs">Simple Tabs</string>
+    <string name="btn_scrollable_tabs">Scrollable Tabs</string>
+    <string name="btn_icon_text_tabs">Icon &amp; Text Tabs</string>
+    <string name="btn_icon_tabs">Only Icon Tabs</string>
+    <string name="btn_pinned_top_tabs">Pinned To Top Tabs</string>
+    <string name="title_activity_icon_text_tabs">Icon and Text Tabs</string>
+    <string name="title_activity_icon_tabs">Icon Tabs</string>
+    <string name="btn_custom_icon_tabs">Custom View Icon &amp; Text</string>
+    <string name="title_activity_custom_view_icon_text_tabs">Custom View Icon &amp; Text</string>
+    <string name="title_activity_pinned_top_tabs">Pin Top Tabs</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="tab_three">THREE</string>
+    <string name="tab_two">TWO</string>
+    <string name="tab_one">one</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="stop_recording">Stop Recording</string>
+    <string name="card_image">Card Image</string>
+    <string name="foreground_span_color">#d62d20</string>
+    <string name="new_words">New:</string>
+    <string name="record_mic">Record Mic</string>
+    <string name="play_button">Play Button</string>
+    <string name="learned_words">Learned:</string>
+    <string name="mastered_words">Mastered:</string>
+    <string name="revising_words">Revising:</string>
+    <string name="done_words">Done:</string>
+    <string name="correct_message" formatted="false">You are %.2f%% confident
+        that you were right,
+        Good Job!</string>
+    <string name="low_confidence_msg">Though you said the right word, you can
+        pronounce better.</string>
+    <string name="high_confidence_incorrect" formatted="false">I am sure you sounded like
+    %s</string>
+    <string name="incorrect_msg">Bad Try, Listen again carefully!</string>
+    <string name="correct_green">#008744</string>
+    <string name="wrong_red">#d62d20</string>
+
+</resources>
