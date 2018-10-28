@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BoardingActivity"
+    android:background="@drawable/activity_background">
+
+
+
+    <Button
+        android:id="@+id/learn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="295dp"
+        android:background="@drawable/signin_button_background"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="Learn"
+        android:textAllCaps="false"
+        android:textColor="@color/material_blue"
+        android:textSize="24sp"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/Check"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+
+        android:layout_alignParentStart="true"
+
+        android:layout_marginBottom="237dp"
+        android:background="@drawable/signin_button_background"
+        android:paddingLeft="20dp"
+        android:paddingStart="20dp"
+        android:text="Check"
+        android:textAllCaps="false"
+        android:textColor="@color/material_blue"
+        android:textSize="24sp"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/AppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="Fluency Pro"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        android:textStyle="bold"
+
+        />
+
+
+</RelativeLayout>

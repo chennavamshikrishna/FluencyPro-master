@@ -1,6 +1,5 @@
-package com.example.lenovo.correctly;
+package com.example.lenovo;
 
-import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.media.AudioRecord;
 import android.os.Handler;
@@ -16,35 +15,28 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lenovo.correctly.R;
 import com.example.lenovo.correctly.clients.StreamingRecognizeClient;
+import com.example.lenovo.correctly.fluencyActivity;
 import com.example.lenovo.correctly.utils.GoogleAudioFormat;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.security.ProviderInstaller;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.apache.commons.lang3.StringEscapeUtils;
+
+import java.util.Locale;
 import java.util.Random;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-public class fluencyActivity extends AppCompatActivity implements View.OnClickListener {
-    private ValueEventListener valueEventListener;
-    //ProgressDialog progressDialog;
-
-    public TextView wordshow,trans,phonetic;
+public class PronunceActivity extends AppCompatActivity implements View.OnClickListener {
+    public TextView trans;
     public ImageView sounder,correctImage,record;
-   ArrayList<String>word;
-   ArrayList<String>phonetics;
+    public EditText wordshow;
     public int i = 0;
     public String confidence = "";
     public String transcript = "";
@@ -52,14 +44,11 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
     String text = "";
     TextToSpeech t1;
     //ProgressDialog progressDialog;
-    private Random randomGenerator;
+
 
     private AudioRecord mAudioRecord = null;
     private boolean mIsRecording = false;
     private StreamingRecognizeClient mStreamingClient;
-
-
-
 
     private void startRecording() {
         mAudioRecord.startRecording();
@@ -95,7 +84,7 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-                    updateWord();
+                    //updateWord();
 
                 }
 
@@ -125,16 +114,13 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
                     AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in));
 
         }
-        wordshow.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.zoom_in));
-        wordshow.animate().start();
+
         trans.setAnimation(AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.zoom_in));
         trans.animate().start();
 
 
     }
-
     private void readData() {
         byte sData[] = new byte[GoogleAudioFormat.BufferSize];
         while (mIsRecording) {
@@ -152,7 +138,6 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
             }
         }
     }
-
     private void initialize() {
 
         final Handler handler = new Handler() {
@@ -202,7 +187,7 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
 
                 try {
                     mStreamingClient = GoogleAudioFormat.getStreamRecognizer
-                            (fluencyActivity.this, handler);
+                            (PronunceActivity.this, handler);
                 } catch (Exception e) {
                     Log.e(fluencyActivity.class.getSimpleName(), "Error", e);
                 }
@@ -222,21 +207,13 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fluency);
-        word=new ArrayList<>();
-        phonetics=new ArrayList<>();
-        randomGenerator = new Random();
-        wordshow=(TextView)findViewById(R.id.word);
-        phonetic=(TextView)findViewById(R.id.phonetics);
+        setContentView(R.layout.activity_pronunce);
+
+        wordshow=(EditText)findViewById(R.id.here);
+
         trans= (TextView) findViewById(R.id.trans);
         correctImage = (ImageView)findViewById(R.id
                 .correctImages);
@@ -249,7 +226,7 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                t1.setLanguage(Locale.UK);
+                t1.setLanguage(Locale.ENGLISH);
                 t1.setSpeechRate((float) 0.8);
             }
 
@@ -257,21 +234,18 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
         });
         mAudioRecord = GoogleAudioFormat.getAudioRecorder();
         initialize();
-
-        //hear.setOnClickListener(this);
-
         sounder.setOnClickListener(this);
         record.setOnClickListener(this);
-    }
- public void updateWord(){
-     correctImage.setVisibility(View.GONE);
+        trans.setText("Your result shown here");
 
-     trans.setText("Your result shown here");
-     phonetic.setText("phonetic shown here");
-        int index= randomGenerator.nextInt(word.size());
-        wordshow.setText(word.get(index));
-        phonetic.setText(phonetics.get(index));
- }
+    }
+    public void updateWord(){
+        correctImage.setVisibility(View.GONE);
+
+        trans.setText("Your result shown here");
+
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -303,47 +277,5 @@ public class fluencyActivity extends AppCompatActivity implements View.OnClickLi
                 }
             }
         }
-
-
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //progressDialog = Utils.showLoadingDialog(MainActivity.this, true);
-        DatabaseReference databaseReference;
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        databaseReference=firebaseDatabase.getReference().child("words");
-        valueEventListener=databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //Log.d("data is",dataSnapshot.toString());
-                for (DataSnapshot postsnapshot : dataSnapshot.getChildren()) {
-                    word.add(postsnapshot.getKey());
-                    phonetics.add(postsnapshot.getValue().toString());
-
-                }
-                /*if (progressDialog != null && progressDialog.isShowing()) {
-                    progressDialog.cancel();
-                }*/
-                //wordshow.setText(word.get(0));
-                updateWord();
-
-                Log.d("size is",word.size()+"v"+word.get(0));
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }
